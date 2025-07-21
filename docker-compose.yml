@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_NAME=document_management
+      - JWT_SECRET=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAxLCJ1c2VybmFtZSI6InNhbmtldCIsInJvbGUiOiJhZG1pbiJ9.OpVI3A-_km3KOWv541d6II_zdQU3imbqfLzRY3sJOjY
+      - PYTHON_BACKEND_URL=http://python-backend:8000
+    depends_on:
+      - db
+  db:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=document_management
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
