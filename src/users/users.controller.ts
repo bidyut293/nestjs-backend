@@ -17,6 +17,7 @@ export class UsersController {
 
   @Get()
   async findAll(@Request() req) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return this.usersService.findAll(req.user);
   }
 
