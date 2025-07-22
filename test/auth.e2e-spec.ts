@@ -32,20 +32,20 @@ describe('AuthController (e2e)', () => {
     return request(app.getHttpServer())
       .post('/auth/register')
       .send({
-        email: 'test@example.com',
-        password: 'password123',
+        email: 'bs@gmail.com',
+        password: 'bs123',
         role: 'viewer',
       })
       .expect(201)
       .expect((res) => {
-        expect(res.body.email).toEqual('test@example.com');
+        expect(res.body.email).toEqual('bs@gmail.com');
       });
   });
 
   it('/auth/login (POST)', () => {
     return request(app.getHttpServer())
       .post('/auth/login')
-      .send({ email: 'test@example.com', password: 'password123' })
+      .send({ email: 'bs@gmail.com', password: 'bs123' })
       .expect(201)
       .expect((res) => {
         expect(res.body.accessToken).toBeDefined();
